@@ -33,6 +33,7 @@ interface FormValues {
 
 const ContactPage = () => {
   // We're no longer using the config property of <Form>
+  // onBlur validates each field as soon as it's unfocused
   const formMethods = useForm({ mode: 'onBlur' })
   const [create, { loading, error }] = useMutation<
     createContactMutation,
@@ -53,7 +54,6 @@ const ContactPage = () => {
     <>
       <MetaTags title="Contact" description="Contact page" />
       <Toaster />
-      {/* onBlur validates each field as soon as it's unfocused */}
       <Form onSubmit={onSubmit} error={error} formMethods={formMethods}>
         <FormError error={error} wrapperClassName="form-error" />
         {/* The label above the text field */}
